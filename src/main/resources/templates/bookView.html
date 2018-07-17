@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:onPageClicked="http://www.w3.org/1999/xhtml"
+      xmlns:case="http://www.w3.org/1999/xhtml">
+<head>
+
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+
+
+    <title>Framework Fixed Html CSS &amp; jQuery</title>
+
+
+
+    <link rel="stylesheet" type="text/css" media="all" th:href="@{/css/style.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/mycss.css}"/>
+
+
+
+
+    <!--[if IE 7]><link type="text/css" rel="stylesheet" th:href="@{http://www.enginecreative.co.uk/wp-content/themes/vanilla-slice/css/ie7.css}" /><![endif]-->
+
+    <!--[if IE 6]><link type="text/css" rel="stylesheet" th:href="@{http://www.enginecreative.co.uk/wp-content/themes/vanilla-slice/css/ie6.css}" /><![endif]-->
+
+
+    <script th:src="@{/js/jquery-1.11.1.js}"></script>
+    <script th:src="@{/bootstrap-paginator-master/build/bootstrap-paginator.min.js}"></script>
+
+
+    <script type="text/javascript">
+
+        // Category Dropdown
+
+        jQuery(function($) {
+
+            $("#toggle-cat").click(function() {
+
+                $("#toggle-client").removeClass("active");
+
+                $("#client-filter-panel").hide();
+
+                $(this).toggleClass("active");
+
+                $("#cat-filter-panel").slideToggle(250);
+
+                return false;
+
+            });
+
+            $("#toggle-client").click(function() {
+
+                $("#toggle-cat").removeClass("active");
+
+                $("#cat-filter-panel").hide();
+
+                $(this).toggleClass("active");
+
+                $("#client-filter-panel").slideToggle(250);
+
+                return false;
+
+            });
+
+        });
+
+
+
+        jQuery(function($) {
+
+            $('#toggling').hide();
+
+            var footerHeight = $('#footer').outerHeight(true);
+
+            $('#footer-toggle').click(function(){
+
+                $('#toggling').animate({
+
+                    'height':'toggle'
+
+                }, 500);
+
+                $(this).toggleClass('expanded');
+
+                return false;
+
+            });
+
+        });
+
+    </script>
+
+
+
+</head>
+
+
+
+<body style="">
+
+
+
+<!-- Fixed header -->
+
+<div id="fixed-header-slide">
+
+    <div id="fixed-header-wrap">
+
+        <div id="fixed-header">
+
+            <div class="fixed-header-nav">
+                <ul class="main-menu">
+                    <li><a th:href="@{/toSuccess}" target="_blank">Home</a></li>
+                    <li><a th:href="@{/toAboutMe}" target="_blank">About Me</a></li>
+                    <li><a th:href="@{/get/first/page/book}"  target="_blank">Book</a></li>
+                    <li><a th:href="@{/toManager}" target="_blank">user</a></li>
+                    <li>Contact Us</li>
+                </ul>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+<!-- Header -->
+
+<div id="header-wrap">
+
+    <div id="header">
+
+        <h1 class="title_name">Welcome to Clair's Library <small>There is always a book for you.</small></h1>
+
+        <div id="main-nav">
+
+            <ul class="main-menu">
+                <li><a th:href="@{/toSuccess}" target="_blank">Home</a></li>
+                <li><a th:href="@{/toAboutMe}" target="_blank">About Me</a></li>
+                <li><a th:href="@{/get/first/page/book}" target="_blank">Book</a></li>
+                <li><a th:href="@{/toManager}" target="_blank">User</a></li>
+                <li>Contact Us</li>
+
+            </ul>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- Main -->
+
+<div id="main-wrap">
+
+    <div id="container" style="font-size: medium">
+
+        <div >
+            <h3>书籍总览</h3>
+            <div >
+
+                <table cellpadding="3px" class="booktab">
+                    <tr>
+                        <th>书ID</th>
+                        <th>书名</th>
+                        <th>作者</th>
+                        <th>价格</th>
+                        <th>创建时间</th>
+                        <th>是否已借</th>
+                        <th>是否已卖</th>
+
+
+                    </tr>
+                    <tr th:each="book:${list}">
+                        <td th:text="${book.bookId}"></td>
+                        <td th:text="${book.bookName}"></td>
+                        <td th:text="${book.author}"></td>
+                        <td th:text="${book.price}"></td>
+                        <td th:text="${book.createTime}"></td>
+                        <td th:text="${book.isBorrow}"></td>
+                        <td th:text="${book.isSell}"></td>
+                        <td><a th:href="@{/toBorrow}">借阅</a></td>
+                        <td><a >购买</a></td>
+                        <td><a th:href="@{/toBack}">归还</a></td>
+                    </tr>
+
+                    <tr>
+                        <td colspan="7"></td>
+
+                        <td colspan="3">
+                            <p>
+                            <form action="/library/get/xx/page/book" method="post">
+                                第<input type="text" style="width: 25px" name="pageNum">页
+                                <input type="submit" value="转到">
+                            </form>
+                            </p>
+
+                        </td>
+
+
+                    </tr>
+                </table>
+            </div>
+
+        </div>
+
+
+    </div>
+</div>
+
+
+<!-- Fixed Footer -->
+
+<div id="fixed-footer-wrap">
+
+    <!-- Footer -->
+
+    <div id="footer-wrap">
+
+        <div id="footer">
+
+            <a  id="footer-toggle"><span></span></a>
+
+            <div id="toggling">
+
+                <div class="border-top">
+
+                    <h3 style="text-align: center">to study with fragmentary time in daily life<br />
+                        you will always get some harvest, might as well make reading become a habit,
+                        keep improving your knowledge of the ocean, did you read today?
+                    </h3>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <h3 style="text-align: center">Write by Cai JiaXin</h3>
+</div>
+
+</body>
+</html>

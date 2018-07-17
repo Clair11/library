@@ -1,0 +1,65 @@
+<div xmlns:th="http://www.w3.org/1999/xhtml" >
+    <div id="main-wrap">
+        <div id="container" style="font-size: medium">
+            <div class="div5">
+                <h3>书籍总览</h3>
+                <div style="font-size: medium;margin-top: 20px">
+
+                    <table class="table table-hover">
+                        <tr style="font-weight: bold">
+                            <td>书ID</td>
+                            <td>书名</td>
+                            <td>作者</td>
+                            <td>价格</td>
+                            <td>创建时间</td>
+                            <td>是否已借</td>
+                            <td>是否已卖</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+
+                        </tr>
+                        <tr th:each="book:${list}">
+                            <td th:text="${book.bookId}"></td>
+                            <td th:text="${book.bookName}"></td>
+                            <td th:text="${book.author}"></td>
+                            <td th:text="${book.price}"></td>
+                            <td th:text="${book.createTime}"></td>
+                            <td th:text="${book.isBorrow}"></td>
+                            <td th:text="${book.isSell}"></td>
+                            <td><a th:href="@{/toUpdateBook}">修改</a></td>
+                            <td><a th:href="@{/deleteBook}">删除</a></td>
+                        </tr>
+
+                        <tr>
+                            <td colspan="6"></td>
+
+                            <td colspan="4">
+                                <p>
+                                <form action="/library/get/xx/page/book" method="post">
+                                    第<input type="text" style="width: 25px" name="pageNum">页
+                                    <input type="submit" value="转到">
+                                </form>
+                                </p>
+
+                            </td>
+
+
+                        </tr>
+                    </table>
+                </div>
+
+            </div>
+
+        </div>
+
+
+    </div>
+
+
+
+
+</div>
+
+
+

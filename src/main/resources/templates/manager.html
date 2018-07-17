@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<html lang="zh_CN" xmlns:shiro="http://www.pollix.at/thymeleaf/shiro">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" th:href="@{/bootstrap/css/bootstrap.min.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/mycss.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/bootstrap/css/bootstrap.css}"/>
+    <script th:src="@{/js/jquery-1.11.1.js}"></script>
+    <script th:src="@{/bootstrap/js/bootstrap.min.js}"></script>
+
+    <script type="text/javascript" th:src="@{/js/jquery.orbit-1.2.3.min.js}"></script>
+    <title>Title</title>
+    <script type="text/javascript">
+        $(window).load(function() {
+            $('#featured').orbit();
+        });
+        function findUser(){
+            /*th:href="@{/toSelectUser}" */
+            $.post("/library/toSelectUser",function(result){
+                alert(result.list[0].userId);
+               var html = " <table cellpadding='3px' class='booktab'>" +
+                   "<tr>" +
+                   "<th>用户ID</th>" +
+                   "<th>用户名</th>" +
+                   "<th>账号</th>" +
+                   "<th>是否停用</th>" +
+                   "<th>是否删除</th>" +
+                   "</tr>";
+                for (i in result.list) {
+                    html += "<tr> " +
+                        "<td>"+result.list[i].userId+"</td> " +
+                        "<td>"+result.list[i].userName+"</td> " +
+                        "<td>"+result.list[i].account+"</td> " +
+                        "<td>"+result.list[i].status+"</td> " +
+                        "<td>"+result.list[i].isDelete+"</td> " +
+                        "</tr>";
+                }
+                html += "</table>";
+                $("#content").append(html);
+            },"json");
+        }
+    </script>
+    <style>
+        #content{
+            width: 100%;
+            height: 500px;
+
+        }
+    </style>
+</head>
+<body class="bj2">
+
+<nav class="navbar navbar-default" role="navigation">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#example-navbar-collapse">
+                <span class="sr-only">切换导航</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">图书馆管理</a>
+        </div>
+        <div class="collapse navbar-collapse" id="example-navbar-collapse">
+            <ul class="nav navbar-nav">
+                <li class="dropdown" shiro:hasAnyRoles="superManager,bookManager">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">图书管理
+                        <b class="caret"></b>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a th:href="@{/addBook}">图书增加</a></li>
+                        <li><a th:href="@{/get/all/book}">图书列表</a></li>
+                    </ul>
+                </li>
+
+                <li class="dropdown" shiro:hasRole="superManager">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">用户管理
+                        <b class="caret"></b>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a th:href="@{/toAddUser}">用户增加</a></li>
+                        <li><a th:href="@{/selectUser}">用户查看</a></li>
+                        <!--<li><a onclick="findUser()">用户查看</a></li>-->
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<div id="content" style="text-align: center;">
+        <div th:replace="${page}"></div>
+</div>
+</body>
+</html>

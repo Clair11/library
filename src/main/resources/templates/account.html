@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/bootstrap/css/bootstrap.min.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/mycss.css}"/>
+
+</head>
+<body  class="bj">
+    <div class="div1" style="height: 300px;">
+        <div class="div2">
+            <form action="public/toAccount" method="post">
+                <label for="acc">输入账号</label>
+                <input id="acc" class="form-control"  style="height: 35px;margin-bottom: 10px" type="text" name="account">
+
+                <label for="pass">输入密码</label>
+                <input id="pass" class="form-control"  style="height: 35px" type="text" name="password"><br/>
+
+                <input type="submit" class="btn btn-primary btn-lg btn-block bn1"  value="登陆"><br/>
+                <a th:href="@{public/login}" class="a1" >立即注册</a>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

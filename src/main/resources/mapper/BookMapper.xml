@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.demo.dao.BookMapper" >
+  <resultMap id="BaseResultMap" type="com.example.demo.pojo.Book" >
+    <id column="book_id" property="bookId" jdbcType="INTEGER" />
+    <result column="book_name" property="bookName" jdbcType="VARCHAR" />
+    <result column="author" property="author" jdbcType="VARCHAR" />
+    <result column="price" property="price" jdbcType="DOUBLE" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="is_borrow" property="isBorrow" jdbcType="BIT" />
+    <result column="is_sell" property="isSell" jdbcType="BIT" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    book_id, book_name, author, price, create_time, is_borrow, is_sell
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from book
+    where book_id = #{bookId,jdbcType=INTEGER}
+  </select>
+
+  <select id="select" resultMap="BaseResultMap" >
+    select * from book
+  </select>
+
+  <delete id="deleteByName" parameterType="java.lang.String" >
+    delete from book
+    where book_name = #{bookName,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.example.demo.pojo.Book" >
+    insert into book (book_id, book_name, author, 
+      price, create_time, is_borrow, 
+      is_sell)
+    values (#{bookId,jdbcType=INTEGER}, #{bookName,jdbcType=VARCHAR}, #{author,jdbcType=VARCHAR}, 
+      #{price,jdbcType=DOUBLE}, #{createTime,jdbcType=TIMESTAMP}, #{isBorrow,jdbcType=BIT}, 
+      #{isSell,jdbcType=BIT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.example.demo.pojo.Book" >
+    insert into book
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="bookId != null" >
+        book_id,
+      </if>
+      <if test="bookName != null" >
+        book_name,
+      </if>
+      <if test="author != null" >
+        author,
+      </if>
+      <if test="price != null" >
+        price,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="isBorrow != null" >
+        is_borrow,
+      </if>
+      <if test="isSell != null" >
+        is_sell,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="bookId != null" >
+        #{bookId,jdbcType=INTEGER},
+      </if>
+      <if test="bookName != null" >
+        #{bookName,jdbcType=VARCHAR},
+      </if>
+      <if test="author != null" >
+        #{author,jdbcType=VARCHAR},
+      </if>
+      <if test="price != null" >
+        #{price,jdbcType=DOUBLE},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isBorrow != null" >
+        #{isBorrow,jdbcType=BIT},
+      </if>
+      <if test="isSell != null" >
+        #{isSell,jdbcType=BIT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.example.demo.pojo.Book" >
+    update book
+    <set >
+      <if test="bookName != null" >
+        book_name = #{bookName,jdbcType=VARCHAR},
+      </if>
+      <if test="author != null" >
+        author = #{author,jdbcType=VARCHAR},
+      </if>
+      <if test="price != null" >
+        price = #{price,jdbcType=DOUBLE},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isBorrow != null" >
+        is_borrow = #{isBorrow,jdbcType=BIT},
+      </if>
+      <if test="isSell != null" >
+        is_sell = #{isSell,jdbcType=BIT},
+      </if>
+    </set>
+    where book_id = #{bookId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.example.demo.pojo.Book" >
+    update book
+    set book_name = #{bookName,jdbcType=VARCHAR},
+      author = #{author,jdbcType=VARCHAR},
+      price = #{price,jdbcType=DOUBLE},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      is_borrow = #{isBorrow,jdbcType=BIT},
+      is_sell = #{isSell,jdbcType=BIT}
+    where book_id = #{bookId,jdbcType=INTEGER}
+  </update>
+</mapper>

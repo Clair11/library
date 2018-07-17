@@ -1,0 +1,119 @@
+.head{
+    height:40px;
+    background-color: #FF6A6A
+}
+
+.div1{
+     width: 350px;
+     border: 1px solid rgba(255,255,255, 0.1);
+     margin: 100px 200px ;
+     background-color: rgba(255,255,255,0.2)
+
+ }
+
+.div2{
+    width: 260px;
+    height: 250px;
+    margin: 25px auto;
+    border: 0px solid red;
+}
+
+.div3{
+    width: 350px;
+    border: 1px solid rgba(255,255,255, 0.1);
+    margin: 50px 450px ;
+    background-color: rgba(255,255,255,0.2)
+
+}
+
+.div4{
+    width: 250px;
+    height:400px;
+    margin-left: 50px;
+    margin-top: 10px
+}
+
+.div5{
+    width: 1100px;
+    border: 1px solid rgba(255,255,255, 0.1);
+    margin: 0px 250px ;
+    background-color: rgba(255,255,255,0.3)
+
+}
+
+.height1{
+    height: 350px;
+}
+
+.height2{
+    height: 470px;
+}
+
+.height3{
+    height: 200px;
+}
+
+.text-center{
+    text-align: center;
+}
+.bn1{
+   height: 40px;
+}
+
+.bn2{
+
+    margin-top: 50px;
+}
+
+.bj{
+    background-size: 100% 100%;
+    background:url(../image/bj1.jpg);
+}
+
+.bj2{
+    background-image: url("../image/lan.jpg");
+
+}
+
+.b1{
+    background-size: 100% 100%;
+    background-image: url("../image/b1.jpg");
+}
+
+.a1{
+    margin-left: 200px;
+}
+
+.b2{
+    background-color: #e4b9c0;
+    background-size: 100% 100%;
+}
+
+.foot{
+    height:40px;
+    background-color: #FF6A6A
+}
+
+.pre1{
+    font-style:italic ;
+    font-size: 17px;
+
+    vertical-align: middle;
+}
+.xin{
+    background-image: url("../image/xinfeng.jpg");
+    background-size: 400px 500px;
+
+}
+
+.booktab{
+   text-align: center;
+    border: solid 1px;
+}
+
+
+.usertab{
+    text-align: center;
+    font-size: 18px;
+
+}

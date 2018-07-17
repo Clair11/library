@@ -1,0 +1,52 @@
+<div xmlns:th="http://www.w3.org/1999/xhtml" >
+
+<div class="div5" >
+    <h3 >用户总览</h3>
+    <table class="table table-hover">
+        <tr style="font-weight: bold">
+            <td>用户ID</td>
+            <td>用户名</td>
+            <td>账号</td>
+            <td>创建时间</td>
+            <td>角色ID</td>
+            <td>角色名</td>
+            <td>是否停用</td>
+            <td>是否删除</td>
+
+        </tr>
+        <tr th:each="user:${list}">
+            <td th:text="${user.userName}"></td>
+            <td th:text="${user.account}"></td>
+            <td th:text="${user.createTime}"></td>
+            <td th:text="${user.roleId}"></td>
+            <td th:text="${user.roleName}"></td>
+            <td th:text="${user.status}"></td>
+            <td th:text="${user.userId}"></td>
+            <td th:text="${user.isDelete}"></td>
+            <td><a th:href="@{/toUpdateUser}">更改</a></td>
+          <!--  <td><a >停用</a></td>-->
+            <td> <a th:href="@{/toDeleteUser}">删除</a></td>
+
+        </tr>
+
+        <tr>
+            <td colspan="6"></td>
+
+            <td colspan="2">
+                <p>
+                <form action="" method="post">
+                    第<input type="text" style="width: 25px" name="pageNum">页
+                    <input type="submit" value="转到">
+                </form>
+                </p>
+
+            </td>
+
+
+        </tr>
+    </table>
+</div>
+
+
+
+</div>
