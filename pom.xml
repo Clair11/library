@@ -155,6 +155,12 @@
 			<artifactId>thymeleaf-extras-shiro</artifactId>
 			<version>2.0.0</version>
 		</dependency>
+
+		<dependency>
+			<groupId>org.apache.maven.plugins</groupId>
+			<artifactId>maven-compiler-plugin</artifactId>
+			<version>2.3.2</version>
+		</dependency>
 	</dependencies>
 
 	<profiles>
@@ -246,6 +252,7 @@
 				<version>2.3</version>
 				<configuration>
 					<warName>library</warName>
+					<failOnMissingWebXml>false</failOnMissingWebXml>
 				</configuration>
 			</plugin>
 			<plugin>
