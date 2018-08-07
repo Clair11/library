@@ -24,7 +24,7 @@
 		<java.version>1.8</java.version>
 	</properties>
 
-	<!--<repositories>
+	<repositories>
 		<repository>
 			<id>maven-net-cn</id>
 			<name>Maven China Mirror</name>
@@ -54,7 +54,7 @@
 			</snapshots>
 		</pluginRepository>
 	</pluginRepositories>
--->
+
 
 	<dependencies>
 		<dependency>
